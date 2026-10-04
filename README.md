@@ -8,15 +8,15 @@ An intelligent, modern, responsive AI-powered agricultural web application desig
 
 ## 🌟 Key Features
 
-* **Instant Leaf Disease Diagnosis**: Upload or drag-and-drop foliar photographs or use your device camera.
-* **Computer Vision & Pattern Analysis**: Evaluates leaf color profiles, chlorotic halos, necrotic bullseye rings, and lesion borders.
-* **Deterministic AI & Real ML Pipeline**: Modular architecture designed for PyTorch/Torchvision deep learning models, paired with a deterministic feature-based demo engine (no random numbers).
-* **Comprehensive Agronomic Guidance**: Every diagnosis returns visible symptoms, primary biological causes, recommended treatments (both cultural/organic and chemical fungicides), and long-term prevention protocols.
-* **10+ Supported Crop Families**: Tomato, Potato, Apple, Corn (Maize), Grape, Bell Pepper, Strawberry, Rice, Wheat, and Cotton.
-* **Interactive Health Analytics Dashboard**: KPI summary cards, SVG detection activity trend line chart, and status distribution donut chart.
-* **Diagnostic History Archive**: Filter by crop or disease status, real-time search, full detail modal view, and record deletion with automatic local synchronization.
-* **Live Camera Capture**: Integrated webcam/mobile camera modal with guide reticle and front/rear camera flip.
-* **Low-Confidence & Uncertainty Safeguard**: Low-confidence or non-leaf images trigger an explicit uncertainty warning rather than a false diagnosis.
+- **Instant Leaf Disease Diagnosis**: Upload or drag-and-drop foliar photographs or use your device camera.
+- **Computer Vision & Pattern Analysis**: Evaluates leaf color profiles, chlorotic halos, necrotic bullseye rings, and lesion borders.
+- **Deterministic AI & Real ML Pipeline**: Modular architecture designed for PyTorch/Torchvision deep learning models, paired with a deterministic feature-based demo engine (no random numbers).
+- **Comprehensive Agronomic Guidance**: Every diagnosis returns visible symptoms, primary biological causes, recommended treatments (both cultural/organic and chemical fungicides), and long-term prevention protocols.
+- **10+ Supported Crop Families**: Tomato, Potato, Apple, Corn (Maize), Grape, Bell Pepper, Strawberry, Rice, Wheat, and Cotton.
+- **Interactive Health Analytics Dashboard**: KPI summary cards, SVG detection activity trend line chart, and status distribution donut chart.
+- **Diagnostic History Archive**: Filter by crop or disease status, real-time search, full detail modal view, and record deletion with automatic local synchronization.
+- **Live Camera Capture**: Integrated webcam/mobile camera modal with guide reticle and front/rear camera flip.
+- **Low-Confidence & Uncertainty Safeguard**: Low-confidence or non-leaf images trigger an explicit uncertainty warning rather than a false diagnosis.
 
 ---
 
@@ -54,16 +54,18 @@ An intelligent, modern, responsive AI-powered agricultural web application desig
 ```
 
 ### Frontend
-* **Core**: React 18 with TypeScript
-* **Build Tool**: Vite
-* **Styling**: Tailwind CSS with custom agriculture design tokens
-* **Icons**: Lucide React
+
+- **Core**: React 18 with TypeScript
+- **Build Tool**: Vite
+- **Styling**: Tailwind CSS with custom agriculture design tokens
+- **Icons**: Lucide React
 
 ### Backend
-* **Web Framework**: FastAPI (Asynchronous Python 3.11+)
-* **Server**: Uvicorn
-* **Image Processing**: Pillow (PIL), NumPy
-* **Deep Learning Framework**: PyTorch / Torchvision
+
+- **Web Framework**: FastAPI (Asynchronous Python 3.11+)
+- **Server**: Uvicorn
+- **Image Processing**: Pillow (PIL), NumPy
+- **Deep Learning Framework**: PyTorch / Torchvision
 
 ---
 
@@ -123,8 +125,9 @@ plant-decatation/
 ## 🚀 Quick Start Guide
 
 ### 1. Prerequisites
-* **Node.js** (v18 or higher)
-* **Python** (v3.10 or higher)
+
+- **Node.js** (v18 or higher)
+- **Python** (v3.10 or higher)
 
 ---
 
@@ -143,8 +146,8 @@ plant-decatation/
    python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
    ```
 4. Verify backend health in your browser or terminal:
-   * **API Docs (Swagger UI)**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-   * **Health Endpoint**: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
+   - **API Docs (Swagger UI)**: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+   - **Health Endpoint**: [http://127.0.0.1:8000/health](http://127.0.0.1:8000/health)
 
 ---
 
@@ -166,7 +169,9 @@ plant-decatation/
 ## 📡 API Specification
 
 ### `GET /health`
+
 Returns system status, device information, and model loading state.
+
 ```json
 {
   "status": "ok",
@@ -180,11 +185,14 @@ Returns system status, device information, and model loading state.
 ```
 
 ### `POST /predict`
+
 Accepts a plant leaf image as `multipart/form-data`.
-* **Field**: `file` (JPG, JPEG, PNG, WEBP, up to 15MB)
-* **Optional query param**: `demo=true` (forces demo pipeline)
+
+- **Field**: `file` (JPG, JPEG, PNG, WEBP, up to 15MB)
+- **Optional query param**: `demo=true` (forces demo pipeline)
 
 **Response Example:**
+
 ```json
 {
   "id": "e4b2d3c1-84fb-4b55-a228-3e4b78910abc",
@@ -219,15 +227,19 @@ Accepts a plant leaf image as `multipart/form-data`.
 ```
 
 ### `GET /history`
+
 Returns list of all historical detections with optional filters:
-* `q`: Search query string
-* `plant`: Crop filter (e.g. `Tomato`, `Apple`)
-* `status`: `Healthy`, `Diseased`, `Uncertain`
+
+- `q`: Search query string
+- `plant`: Crop filter (e.g. `Tomato`, `Apple`)
+- `status`: `Healthy`, `Diseased`, `Uncertain`
 
 ### `DELETE /history/{id}`
+
 Deletes a specific detection record by unique ID.
 
 ### `GET /history/stats/summary`
+
 Returns aggregated analytics metrics for the dashboard.
 
 ---
@@ -237,6 +249,7 @@ Returns aggregated analytics metrics for the dashboard.
 PlantCare AI is architected with an abstract prediction base class `BasePredictionEngine` in [`backend/services/prediction_service.py`](file:///backend/services/prediction_service.py).
 
 To plug in a trained PyTorch or TensorFlow model:
+
 1. Export your trained model weights to `backend/models/plant_disease_model.pth`.
 2. In `PyTorchModelEngine`:
    ```python
